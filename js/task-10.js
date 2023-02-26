@@ -9,6 +9,7 @@ const refs = {
   boxes: document.querySelector('#boxes')
 };
 
+
 refs.btnCreate.addEventListener('click', createBoxes);
 refs.btnDestroy.addEventListener('click', destroyBoxes);
 
@@ -18,6 +19,7 @@ function destroyBoxes() {
 
 function createBoxes(amount) {
   amount = refs.input.value;
+  const boxesArr = [];
   
   for (let i = 0; i < amount; i += 1) {
     let div = document.createElement('div');
@@ -25,8 +27,8 @@ function createBoxes(amount) {
     div.style.width = `${i * 10 + 30}px`;
     div.style.height = `${i * 10 + 30}px`;
     div.style.backgroundColor = getRandomHexColor();
-
+    boxesArr.push(div);
     console.log(div);
-    refs.boxes.append(div);
   };
+  refs.boxes.append(...boxesArr);
 };
